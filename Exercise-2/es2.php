@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Esercizio 2</title>
+    <title>Exercise 2</title>
+    <link rel="stylesheet" href="../Exercise-2/style.css">
 </head>
 <body>
 <form method="post">
@@ -12,11 +13,14 @@
 </form>
 
 <?php
+
+use exercise1\databaseConnection;
+
 if (isset($_POST['execute'])) {
-    require_once 'databaseConnection.php';
+    require_once '..\Exercise-1\databaseConnection.php';
 
     $database = databaseConnection::getInstance();
-    $connection = $database->getConnection('localhost', 'test', 'KlW93Jm93*W/D(jw', 'm151');
+    $connection = $database->getConnectionDefault();
 
     $query = $_POST['query'];
     $result = $connection->query($query);

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Esercizio 3 - Versione 2</title>
+    <title>Exercise 3 - Version 2</title>
+    <link rel="stylesheet" href="../Exercise-3/style.css">
 </head>
 <body>
 <form method="post">
@@ -33,10 +34,8 @@
     <input type="text" id="observations" name="observations"><br>
 
     <label for="sex">Sex:</label><br>
-    <input type="radio" id="sexMale" name="sex" value="0" required>
-    <label for="sexMale">Male</label><br>
-    <input type="radio" id="sexFemale" name="sex" value="1" required>
-    <label for="sexFemale">Female</label><br>
+    <label for="sexMale"><input type="radio" id="sexMale" name="sex" value="0" required>Male</label>
+    <label for="sexFemale"><input type="radio" id="sexFemale" name="sex" value="1" required>Female</label>
 
     <label for="hobby">Hobby:</label><br>
     <input type="text" id="hobby" name="hobby"><br><br>
@@ -45,12 +44,15 @@
 </form>
 
 <?php
+
+use exercise1\databaseConnection;
+
 if (isset($_POST['saveData'])) {
-    require_once 'databaseConnection.php';
+    require_once '../Exercise-1/databaseConnection.php';
     require_once 'persona.php';
 
     $database = databaseConnection::getInstance();
-    $connection = $database->getConnection('localhost', 'test', 'KlW93Jm93*W/D(jw', 'm151');
+    $connection = $database->getConnectionDefault();
 
     $persona = new persona($_POST);
     $query = $persona->getQuery();
