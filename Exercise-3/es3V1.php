@@ -53,17 +53,17 @@ if (isset($_POST['saveData'])) {
     $database = databaseConnection::getInstance();
     $connection = $database->getConnectionDefault();
 
-    $name = $_POST['name'];
-    $lastName = $_POST['lastName'];
-    $address = $_POST['address'];
-    $zipCode = $_POST['zipCode'];
-    $city = $_POST['city'];
-    $nation = $_POST['nation'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $email = $_POST['email'];
-    $observations = $_POST['observations'];
-    $sex = $_POST['sex'];
-    $hobby = $_POST['hobby'];
+    $name = mysqli_real_escape_string($connection, $_POST['name']);
+    $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
+    $address = mysqli_real_escape_string($connection, $_POST['address']);
+    $zipCode = mysqli_real_escape_string($connection, $_POST['zipCode']);
+    $city = mysqli_real_escape_string($connection, $_POST['city']);
+    $nation = mysqli_real_escape_string($connection, $_POST['nation']);
+    $phoneNumber = mysqli_real_escape_string($connection, $_POST['phoneNumber']);
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $observations = mysqli_real_escape_string($connection, $_POST['observations']);
+    $sex = mysqli_real_escape_string($connection, $_POST['sex']);
+    $hobby = mysqli_real_escape_string($connection, $_POST['hobby']);
 
     $query = "INSERT INTO users (name, lastName, address, zipCode, city, nation, phoneNumber, email, observations, sex, hobby)
               VALUES ('$name', '$lastName', '$address', '$zipCode', '$city', '$nation', '$phoneNumber', '$email', '$observations', '$sex', '$hobby')";
